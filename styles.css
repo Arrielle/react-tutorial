@@ -1,0 +1,19 @@
+.heading {
+  background-color: teal;
+  height: 80px;
+  line-height: 80px;
+  padding-left: 30px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  border: 1px solid teal;
+  color: white;
+}
+
+.lesson {
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+  border-top: 1px solid teal;
+  margin-bottom: 40px;
+  padding: 20px;
+}
