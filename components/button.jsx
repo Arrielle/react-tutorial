@@ -43,4 +43,4 @@ var Main = React.createClass({
 })
 
 //rendering the button
-React.render(<Main />, document.getElementById("button"));
+ReactDOM.render(<Main />, document.getElementById("button"));
