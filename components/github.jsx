@@ -26,11 +26,48 @@ var Card = React.createClass({
   }
 });
 
-var Main = React.createClass({
+//form for a user to enter in a github username
+var Form = React.createClass({
+  //what happens when the form is submitted
+  handleSubmit: function(e){
+    //e is the event object
+    //don't submit and refesh the page (the default)
+    e.preventDefault();
+    //this.refs.login finds the 'login ref' from below
+    //React.findDOMNode finds the input of that ref
+    var loginInput = React.findDOMNode(this.refs.login);
+    //add the card here
+    this.props.addCard(loginInput.value);
+    loginInput.value = '';
+  },
   render: function(){
     return (
+      <form onSubmit={this.handleSubmit}>
+        <input placeholder="Enter GitHub Username" ref="login" />
+        <button>Add</button>
+      </form>
+    );
+  }
+})
+
+var Main = React.createClass({
+  getInitialState: function(){
+    //an empty array to store usernames in, this array is looped through and added to the dom
+    return { logins: []};
+  },
+  addCard: function(loginToAdd){
+    //grab current states login array, push an item, set the state to the new array
+    this.setState({ logins: this.state.logins.concat(loginToAdd)});
+  },
+  render: function(){
+    //this adds all of the cards that exist within the 'logins' array to the DOM
+    var cards = this.state.logins.map(function(login){
+      return(<Card login={login} />);
+    });
+    return (
       <div>
-        <Card login="Arrielle"/>
+        <Form addCard={this.addCard}/>
+        {cards}
       </div>
     )
   }
