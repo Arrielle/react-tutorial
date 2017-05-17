@@ -14,7 +14,7 @@ var Button = React.createClass({
 var Result = React.createClass({
   render: function(){
     return (
-      <div>{this.props.localCounter}</div>
+      <div><p>Counter: {this.props.localCounter}</p></div>
     )
   }
 });
@@ -43,4 +43,4 @@ var Main = React.createClass({
 })
 
 //rendering the button
-React.render(<Main />, document.getElementById("root"));
+React.render(<Main />, document.getElementById("button"));
